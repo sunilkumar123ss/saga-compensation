@@ -1,0 +1,8 @@
+{
+  "slug": "saga-compensation",
+  "title": "Saga compensation runner",
+  "description": "Compensate completed steps in reverse order after a later operation fails.",
+  "category": "systems",
+  "demo_args": [],
+  "expected_exit": 0
+}
