@@ -36,3 +36,21 @@ def run(steps):
         completed.append((step, value))
         events.append({'step': step.name, 'action': 'completed'})
     return {'status': 'complete', 'events': events}
+
+def demo():
+    ledger = []
+
+    def reserve():
+        ledger.append('synthetic-reservation')
+        return 'synthetic-reservation'
+
+    def release(value):
+        ledger.remove(value)
+
+    def charge():
+        raise RuntimeError('synthetic payment rejection; no payment provider called')
+    result = run([Step('reserve', reserve, release), Step('charge', charge, lambda value: None)])
+    return {**result, 'remaining_reservations': ledger}
+if __name__ == '__main__':
+    argparse.ArgumentParser(description=__doc__).parse_args()
+    print(json.dumps(demo(), indent=2))
