@@ -4,7 +4,7 @@ This reference implementation and all of the following milestone commits were pr
 
 **Every recorded author and committer date in this timeline is synthetic. These dates are not evidence that the code was written, tested, deployed, or used professionally in the past.**
 
-This snapshot is milestone 5 of 14. It is an incomplete tutorial stage; source, fixtures, tests, the CLI, and automation are introduced progressively.
+This snapshot is milestone 6 of 14. It is an incomplete tutorial stage; source, fixtures, tests, the CLI, and automation are introduced progressively.
 
 The progression decomposes already-completed October 2026 code into meaningful additions. It is not recovered original development history. Publication time is separate from the synthetic Git timestamps.
 
@@ -17,7 +17,7 @@ The progression decomposes already-completed October 2026 code into meaningful a
 | 3 | 2024-06-05T12:34:32+05:30 | define named actions and compensation callbacks (present) |
 | 4 | 2024-09-18T16:02:25+05:30 | execute saga steps and compensate completed actions in reverse (present) |
 | 5 | 2024-09-27T13:18:40+05:30 | add the deterministic demonstration and command-line entry point (present) |
-| 6 | 2024-11-10T16:52:43+05:30 | test all success no compensation (later stage) |
+| 6 | 2024-11-10T16:52:43+05:30 | test all success no compensation (present) |
 | 7 | 2025-02-08T11:07:47+05:30 | test reverse compensation (later stage) |
 | 8 | 2025-03-21T10:17:31+05:30 | test compensation failure does not skip remaining (later stage) |
 | 9 | 2025-06-11T16:57:18+05:30 | test failing step not compensated (later stage) |
