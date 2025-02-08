@@ -19,6 +19,11 @@ class SagaTests(unittest.TestCase):
         self.assertEqual(r['status'], 'complete')
         self.assertEqual(calls, [])
 
+    def test_reverse_compensation(self):
+        calls = []
+        r = m.run([m.Step('a', lambda : 1, lambda value: calls.append(value)), m.Step('b', lambda : 2, lambda value: calls.append(value)), m.Step('c', self.fail, lambda value: None)])
+        self.assertEqual(calls, [2, 1])
+        self.assertEqual(r['status'], 'compensated')
 
 
 
