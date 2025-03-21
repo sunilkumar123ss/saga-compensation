@@ -25,6 +25,15 @@ class SagaTests(unittest.TestCase):
         self.assertEqual(calls, [2, 1])
         self.assertEqual(r['status'], 'compensated')
 
+    def test_compensation_failure_does_not_skip_remaining(self):
+        calls = []
+
+        def bad(value):
+            raise RuntimeError('undo failed')
+        r = m.run([m.Step('a', lambda : 1, lambda value: calls.append(value)), m.Step('b', lambda : 2, bad), m.Step('c', self.fail, lambda value: None)])
+        self.assertEqual(calls, [1])
+        self.assertEqual(r['failed_compensations'], ['b'])
+        self.assertEqual(r['status'], 'compensation_incomplete')
 
 
 
