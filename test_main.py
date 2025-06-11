@@ -35,6 +35,10 @@ class SagaTests(unittest.TestCase):
         self.assertEqual(r['failed_compensations'], ['b'])
         self.assertEqual(r['status'], 'compensation_incomplete')
 
+    def test_failing_step_not_compensated(self):
+        calls = []
+        m.run([m.Step('a', self.fail, lambda value: calls.append(value))])
+        self.assertEqual(calls, [])
 
 
 if __name__ == '__main__':
