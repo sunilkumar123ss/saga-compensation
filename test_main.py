@@ -40,6 +40,12 @@ class SagaTests(unittest.TestCase):
         m.run([m.Step('a', self.fail, lambda value: calls.append(value))])
         self.assertEqual(calls, [])
 
+    def test_validates_before_any_action(self):
+        calls = []
+        step = m.Step('a', lambda : calls.append('effect'), lambda value: None)
+        with self.assertRaises(ValueError):
+            m.run([step, step])
+        self.assertEqual(calls, [])
 
 if __name__ == '__main__':
     unittest.main()
