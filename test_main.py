@@ -47,5 +47,7 @@ class SagaTests(unittest.TestCase):
             m.run([step, step])
         self.assertEqual(calls, [])
 
+    def test_empty_saga_completes(self):
+        self.assertEqual(m.run([])['status'], 'complete')
 if __name__ == '__main__':
     unittest.main()
